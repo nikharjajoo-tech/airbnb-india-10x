@@ -67,6 +67,8 @@ h1 { font-size: var(--step-4); line-height: 1.1; }
 .lede { font-size: var(--step-2); max-width: 62ch; }
 .lede strong { color: var(--accent); font-weight: normal; }
 .byline { font-family: var(--font-head); font-size: var(--step-0); color: var(--muted); }
+.byline a, footer a { color: var(--accent); text-underline-offset: 2px; }
+.byline a:focus-visible, footer a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* KPI strip */
 .kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--rule); }
@@ -185,7 +187,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 14px; font-family: var(
     <div class="eyebrow">Memo to Brian Chesky · Airbnb India · October 2026</div>
     <h1>Airbnb India: 10x revenue by 2030</h1>
     <p class="lede"><strong>Own the Indian group trip, at home and abroad.</strong> Current growth gets us about halfway. Four focused bets earn the rest, funded one year at a time.</p>
-    <div class="byline">Nikhar Jajoo · Supporting packet has the full model, sources and counterarguments</div>
+    <div class="byline">Nikhar Jajoo · <a href="https://docs.google.com/document/d/190ceQSMi-pQvH89yVQkekNC8QpmYdmkUPWyTrx_x-mk/edit?usp=sharing" target="_blank" rel="noopener">Read the supporting packet</a>: the full model, sources and counterarguments</div>
   </header>
 
   <div class="kpis">
@@ -342,7 +344,7 @@ footer { border-top: 1px solid var(--rule); padding-top: 14px; font-family: var(
   </div>
 
   <footer>
-    <p>Sources: Airbnb shareholder letters Q4 2025 – Q2 2026 (India origin nights +50–60% a year, 13.6% take rate); Ministry of Tourism Annual Snapshot 2025 (32.8M outbound departures); Booking.com × VIDEC, How India Travels 2026 (alternative stays market); Airbtics India 2025. Momentum, segment split and spend figures are the author's assumptions, explained in the packet.</p>
+    <p>Sources: Airbnb shareholder letters Q4 2025 – Q2 2026 (India origin nights +50–60% a year, 13.6% take rate); Ministry of Tourism Annual Snapshot 2025 (32.8M outbound departures); Booking.com × VIDEC, How India Travels 2026 (alternative stays market); Airbtics India 2025. Momentum, segment split and spend figures are the author's assumptions, explained in the <a href="https://docs.google.com/document/d/190ceQSMi-pQvH89yVQkekNC8QpmYdmkUPWyTrx_x-mk/edit?usp=sharing" target="_blank" rel="noopener">supporting packet</a>.</p>
   </footer>
 </div>
 
