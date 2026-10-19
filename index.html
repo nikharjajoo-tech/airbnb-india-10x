@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Memo: how Airbnb can grow India revenue 10x by 2030. By Nikhar Jajoo.">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>Airbnb India 10x</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<style>
+/* Layout: single memo column, 100x post-read theme (red accent, Arial heads over Georgia body, beige callouts, grey table heads). */
+:root {
+  --bg: #FFFFFF;
+  --fg: #1F1C1A;
+  --muted: #5F5955;
+  --rule: #E4DFD9;
+  --accent: #C8102E;
+  --accent-soft: #FBE7EA;
+  --bar-neutral: #9C9590;
+  --bar-ink: #3A3532;
+  --callout: #F6F0E4;
+  --head: #EFEDEA;
+  --font-head: Arial, "Helvetica Neue", Helvetica, sans-serif;
+  --font-body: Georgia, "Times New Roman", serif;
+  --step-0: 0.875rem;
+  --step-1: 1rem;
+  --step-2: 1.25rem;
+  --step-3: 1.75rem;
+  --step-4: 2.4rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161413; --fg: #EEEAE6; --muted: #ABA49F; --rule: #36312E;
+    --accent: #F0566A; --accent-soft: #3B1D22; --bar-neutral: #77706B; --bar-ink: #D9D3CE;
+    --callout: #241F1B; --head: #26221F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #161413; --fg: #EEEAE6; --muted: #ABA49F; --rule: #36312E;
+  --accent: #F0566A; --accent-soft: #3B1D22; --bar-neutral: #77706B; --bar-ink: #D9D3CE;
+  --callout: #241F1B; --head: #26221F; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: var(--step-1); line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 32px 48px;
+}
+.page { max-width: 1040px; margin: 0 auto; display: grid; gap: 36px; }
+h1, h2, h3, .label, .kpi-value, .eyebrow { font-family: var(--font-head); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.num { font-variant-numeric: tabular-nums; }
+
+/* Header */
+header { display: grid; gap: 12px; border-bottom: 3px solid var(--accent); padding-bottom: 20px; }
+.eyebrow { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-size: var(--step-4); line-height: 1.1; }
+.lede { font-size: var(--step-2); max-width: 62ch; }
+.lede strong { color: var(--accent); font-weight: normal; }
+.byline { font-family: var(--font-head); font-size: var(--step-0); color: var(--muted); }
+
+/* KPI strip */
+.kpis { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; border-block: 1px solid var(--rule); }
+.kpi { padding: 16px 16px 16px 0; display: grid; gap: 4px; align-content: start; }
+.kpi + .kpi { padding-left: 16px; border-left: 1px solid var(--rule); }
+.kpi-value { font-size: var(--step-3); font-weight: bold; line-height: 1.15; font-variant-numeric: tabular-nums; }
+.kpi-value.accent { color: var(--accent); }
+.kpi p { font-size: var(--step-0); color: var(--muted); }
+
+/* Section heads */
+section { display: grid; gap: 16px; }
+.sec-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+h2 { font-size: var(--step-2); }
+.sec-head p { font-size: var(--step-0); color: var(--muted); }
+
+/* Waterfall */
+.wf { display: grid; gap: 6px; }
+.wf-row { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 12px; align-items: center; }
+.wf-label { font-family: var(--font-head); font-size: var(--step-0); line-height: 1.25; }
+.wf-label small { display: block; color: var(--muted); font-size: 0.75rem; }
+.wf-track { position: relative; height: 30px; }
+.wf-grid { position: absolute; inset: 0; pointer-events: none; }
+.wf-grid span { position: absolute; top: 0; bottom: 0; border-left: 1px solid var(--rule); }
+.wf-bar.floor { background: repeating-linear-gradient(135deg, var(--accent-soft) 0 6px, transparent 6px 10px); border: 1px dashed var(--accent); }
+.wf-bar { position: absolute; top: 5px; height: 20px; border-radius: 4px; cursor: default; }
+.wf-bar:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.wf-bar.base { background: var(--bar-ink); }
+.wf-bar.mom { background: var(--bar-neutral); }
+.wf-bar.plan { background: var(--accent); }
+.wf-val { position: absolute; top: 5px; line-height: 20px; font-family: var(--font-head); font-size: var(--step-0); font-weight: bold; padding-left: 8px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.wf-axis { display: grid; grid-template-columns: 11.5rem minmax(0, 1fr); gap: 12px; }
+.wf-axis-track { position: relative; height: 18px; font-family: var(--font-head); font-size: 0.7rem; color: var(--muted); }
+.wf-axis-track span { position: absolute; transform: translateX(-50%); font-variant-numeric: tabular-nums; }
+.wf-axis-track span:first-child { transform: none; }
+.wf-axis-track span:last-child { transform: translateX(-100%); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 20px; font-family: var(--font-head); font-size: 0.8rem; color: var(--muted); }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -1px; margin-right: 6px; }
+.tip { position: fixed; z-index: 20; max-width: 260px; padding: 8px 10px; background: var(--fg); color: var(--bg); font-family: var(--font-head); font-size: 0.8rem; line-height: 1.35; border-radius: 6px; pointer-events: none; }
+
+/* Buckets */
+.buckets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.bucket { border-top: 3px solid var(--accent); padding-top: 12px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.bucket.light { border-top-color: var(--bar-neutral); }
+.bucket-top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+.bucket h3 { font-size: var(--step-1); }
+.bucket .delta { font-family: var(--font-head); font-weight: bold; color: var(--accent); font-variant-numeric: tabular-nums; white-space: nowrap; }
+.bucket.light .delta { color: var(--muted); }
+.bucket p { font-size: var(--step-0); }
+.bucket ul { margin: 0; padding-left: 1.1em; font-size: var(--step-0); display: grid; gap: 4px; }
+.bucket .target { font-family: var(--font-head); font-size: 0.78rem; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 8px; }
+
+.foundation { display: grid; grid-template-columns: auto repeat(4, minmax(0, 1fr)); background: var(--head); border-radius: 4px; }
+.foundation > div { padding: 12px 14px; font-size: var(--step-0); min-width: 0; }
+.foundation .label { font-weight: bold; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; display: flex; align-items: center; color: var(--muted); }
+.foundation b { font-family: var(--font-head); display: block; }
+
+/* Phases */
+.phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; counter-reset: ph; }
+.phase { padding: 14px 16px 14px 0; display: grid; gap: 6px; align-content: start; position: relative; min-width: 0; }
+.phase + .phase { padding-left: 16px; border-left: 1px solid var(--rule); }
+.phase .when { font-family: var(--font-head); font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); font-weight: bold; }
+.phase h3 { font-size: var(--step-1); }
+.phase p { font-size: var(--step-0); }
+.phase .gate { font-family: var(--font-head); font-size: 0.78rem; color: var(--muted); }
+.phase .path { font-family: var(--font-head); font-size: 0.78rem; font-variant-numeric: tabular-nums; }
+
+/* Risks */
+.two { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 28px; }
+table { width: 100%; border-collapse: collapse; font-size: var(--step-0); }
+th { font-family: var(--font-head); text-align: left; background: var(--head); padding: 8px 10px; font-size: 0.78rem; }
+td { padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.table-wrap { overflow-x: auto; }
+.stop { display: grid; gap: 10px; }
+.stop-lead { font-family: var(--font-head); font-weight: bold; }
+.stop ol { margin: 0; padding-left: 1.2em; display: grid; gap: 6px; font-size: var(--step-0); }
+.stop .fine { font-size: 0.8rem; color: var(--muted); }
+.notdo { font-size: var(--step-0); }
+.notdo b { font-family: var(--font-head); }
+
+.callout { background: var(--callout); border-left: 4px solid var(--accent); padding: 14px 18px; display: grid; gap: 6px; font-size: var(--step-0); }
+.callout .label { font-weight: bold; font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); }
+
+footer { border-top: 1px solid var(--rule); padding-top: 14px; font-family: var(--font-head); font-size: 0.75rem; color: var(--muted); display: grid; gap: 6px; }
+
+@media (max-width: 860px) {
+  .buckets { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phases { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .phase:nth-child(3) { padding-left: 0; border-left: 0; }
+  .phase:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .foundation { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .foundation .label { grid-column: 1 / -1; padding-bottom: 0; }
+  .two { grid-template-columns: minmax(0, 1fr); }
+  .kpis { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .kpi:nth-child(3) { padding-left: 0; border-left: 0; }
+  .kpi:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 560px) {
+  h1 { font-size: 1.9rem; }
+  .lede { font-size: 1.1rem; }
+  .buckets, .phases { grid-template-columns: minmax(0, 1fr); }
+  .phase, .phase + .phase { padding-left: 0; border-left: 0; }
+  .phase + .phase { border-top: 1px solid var(--rule); }
+  .wf-row, .wf-axis { grid-template-columns: 7.5rem minmax(0, 1fr); gap: 8px; }
+  .wf-label small { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .wf-bar { transition: filter 120ms ease; }
+}
+.wf-bar:hover { filter: brightness(1.1); }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <header>
+    <div class="eyebrow">Memo to Brian Chesky · Airbnb India · October 2026</div>
+    <h1>Airbnb India: 10x revenue by 2030</h1>
+    <p class="lede"><strong>Own the Indian group trip, at home and abroad.</strong> Current growth gets us about halfway. Four focused bets earn the rest, funded one year at a time.</p>
+    <div class="byline">Nikhar Jajoo · Supporting packet has the full model, sources and counterarguments</div>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi">
+      <div class="kpi-value num">₹0.25B → <span style="color:var(--accent)">₹2.5B</span></div>
+      <p>India revenue, 2026 → 2030 stretch target (~$2.6M → ~$26M)</p>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value num">₹1.6–1.8B</div>
+      <p>Realistic floor (~7x) if the bets only partly land</p>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value num">78% a year</div>
+      <p>Growth that 10x needs. Current momentum gives 35–48%.</p>
+    </div>
+    <div class="kpi">
+      <div class="kpi-value num">~₹1.8B</div>
+      <p>4-year investment (~$19M), released yearly only if gates are met</p>
+    </div>
+  </div>
+
+  <section aria-labelledby="wf-h">
+    <div class="sec-head">
+      <h2 id="wf-h">Where the 10x comes from</h2>
+      <p>2030 revenue, ₹ billion, base case</p>
+    </div>
+    <div class="wf" id="wf" role="img" aria-label="Waterfall from ₹0.25B in 2026 to ₹2.5B in 2030: momentum adds 0.94, Indians abroad 0.50, Indians in India 0.47, the world in India 0.09, beyond stays 0.25. Realistic floor 1.6 to 1.8."></div>
+    <div class="legend">
+      <span><i style="background:var(--bar-ink)"></i>Start and end</span>
+      <span><i style="background:var(--bar-neutral)"></i>Momentum (happens anyway)</span>
+      <span><i style="background:var(--accent)"></i>Plan (we must earn it)</span>
+      <span><i style="background:repeating-linear-gradient(135deg,var(--accent-soft) 0 3px,transparent 3px 5px);border:1px dashed var(--accent)"></i>Realistic floor</span>
+    </div>
+  </section>
+
+  <section aria-labelledby="b-h">
+    <div class="sec-head">
+      <h2 id="b-h">Four buckets: who travels, and where</h2>
+      <p>Each booking falls in exactly one bucket</p>
+    </div>
+    <div class="buckets">
+      <article class="bucket">
+        <div class="bucket-top"><h3>① Indians abroad</h3><span class="delta">+₹0.50B</span></div>
+        <p>Lead here. One trip abroad is worth 4–5 trips at home, and it uses homes Airbnb already has.</p>
+        <ul>
+          <li>Campaigns for family and friend groups to Dubai, Bali, Vietnam, Japan and Europe</li>
+          <li>Boutique hotels where homes are restricted (Thailand, Singapore)</li>
+          <li>Rupee pricing, visa-ready confirmations, kitchens for veg families</li>
+        </ul>
+        <div class="target">Target: ~1% of Indian leisure trips abroad (~0.16% today)</div>
+      </article>
+      <article class="bucket">
+        <div class="bucket-top"><h3>② Indians in India</h3><span class="delta">+₹0.47B</span></div>
+        <p>Weekend and holiday getaways for groups from the top 8 metros.</p>
+        <ul>
+          <li>Verified homes in 3–4 corridors first (Lonavala, Coorg, Himachal, Goa)</li>
+          <li>Villa brands list on Airbnb for quality group supply</li>
+          <li>Brand spend only after trust targets are met</li>
+        </ul>
+        <div class="target">Target: ~1.5% of India's homestay and villa bookings</div>
+      </article>
+      <article class="bucket light">
+        <div class="bucket-top"><h3>③ The world in India</h3><span class="delta">+₹0.09B</span></div>
+        <p>Foreign tourists and NRIs visiting home. Kept light on purpose.</p>
+        <ul>
+          <li>Foreign arrivals are still below 2019</li>
+          <li>Form C filing helper so hosts accept foreign guests</li>
+        </ul>
+        <div class="target">Target: inbound revenue ~4x</div>
+      </article>
+      <article class="bucket">
+        <div class="bucket-top"><h3>④ Beyond stays</h3><span class="delta">+₹0.25B</span></div>
+        <p>New revenue lines Airbnb is already building globally.</p>
+        <ul>
+          <li>Experiences and Services in 5 Indian cities</li>
+          <li>Boutique and independent hotels in India</li>
+        </ul>
+        <div class="target">Target: ₹0.25B from zero</div>
+      </article>
+    </div>
+    <div class="foundation">
+      <div class="label">Shared foundation</div>
+      <div><b>Trust</b>Verified homes, AI photo-vs-reality checks with human review</div>
+      <div><b>Pay</b>UPI first, with split pay so the whole group pays its share</div>
+      <div><b>Plan</b>AI group plans shared to WhatsApp, in Hindi and Hinglish</div>
+      <div><b>Supply</b>Villa-brand partners, registration and GST tools for hosts</div>
+    </div>
+  </section>
+
+  <section aria-labelledby="p-h">
+    <div class="sec-head">
+      <h2 id="p-h">Sequence and gates</h2>
+      <p>Each phase unlocks the next tranche only if its gate is met</p>
+    </div>
+    <div class="phases">
+      <div class="phase">
+        <div class="when">First 90 days</div>
+        <h3>Validate</h3>
+        <p>Pilot in Mumbai and Bengaluru against Delhi NCR and Hyderabad. Six small bets, one per link: groups, pay, trust, abroad, supply.</p>
+        <div class="gate">Gate: +15% bookings vs control, payback under 18 months</div>
+      </div>
+      <div class="phase">
+        <div class="when">2027</div>
+        <h3>Prove</h3>
+        <p>Trips abroad and split pay across the top 8 metros. Fix trust in the getaway corridors.</p>
+        <div class="path">Target ₹0.45B · floor ₹0.40B</div>
+      </div>
+      <div class="phase">
+        <div class="when">2028</div>
+        <h3>Scale</h3>
+        <p>Domestic brand spend, villa brands, Hindi app, Experiences.</p>
+        <div class="path">Target ₹0.79B · floor ₹0.63B</div>
+      </div>
+      <div class="phase">
+        <div class="when">2029–30</div>
+        <h3>Expand</h3>
+        <p>Tier-2 cities, NRIs, hotels in India. Reserve levers if growth slows.</p>
+        <div class="path">2029 ₹1.41B · 2030 ₹2.5B (floor ₹1.6B)</div>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="r-h">
+    <div class="sec-head"><h2 id="r-h">What could go wrong, and when we stop</h2></div>
+    <div class="two">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Risk</th><th>Response</th></tr></thead>
+          <tbody>
+            <tr><td>Momentum fades faster than expected</td><td>Reserve levers worth ~₹0.4B: work and long stays, investing in a villa brand</td></tr>
+            <tr><td>Groups are not the wedge</td><td>Switch to Indians abroad only: cheapest, highest value</td></tr>
+            <tr><td>State rules remove supply (Goa)</td><td>Registration tools for hosts; registered villa brands</td></tr>
+            <tr><td>Price war with MakeMyTrip or OYO</td><td>No fee cuts. Compete where homes beat hotels: groups, longer stays, abroad</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="stop">
+        <p class="stop-lead">We stop the extra spend, never Airbnb India.</p>
+        <ol>
+          <li><b>Feature</b> hurts conversion → switch it off</li>
+          <li><b>Bet</b> misses its target → end it, move the budget</li>
+          <li><b>Group wedge</b> fails (lift under 5%) → abroad only</li>
+          <li><b>Payback</b> over 18 months at two yearly gates → withhold next tranche</li>
+        </ol>
+        <p class="fine">Two readings in a row, judged against control cities. Trust and safety commitments are never rolled back.</p>
+        <p class="notdo"><b>Not doing:</b> weddings, package tours, budget rooms, fee increases, selling through MakeMyTrip.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="callout">
+    <div class="label">A note on the baseline</div>
+    <p>This memo uses the brief's ₹250M. A listing-based estimate suggests Airbnb's India marketplace revenue may be 5–30x higher; ₹250M is close to the Indian entity's reported service revenue. The plan is built on ratios, so it holds either way. If the true base is larger, I would recommend a ~5x target.</p>
+  </div>
+
+  <footer>
+    <p>Sources: Airbnb shareholder letters Q4 2025 – Q2 2026 (India origin nights +50–60% a year, 13.6% take rate); Ministry of Tourism Annual Snapshot 2025 (32.8M outbound departures); Booking.com × VIDEC, How India Travels 2026 (alternative stays market); Airbtics India 2025. Momentum, segment split and spend figures are the author's assumptions, explained in the packet.</p>
+  </footer>
+</div>
+
+<div class="tip" id="tip" hidden></div>
+
+<script>
+(function () {
+  var MAX = 2.5;
+  var rows = [
+    { label: "2026 today", sub: "Brief baseline", start: 0, end: 0.25, kind: "base", val: "₹0.25B", tip: "2026 India revenue per the brief: ₹0.25B (~$2.6M)." },
+    { label: "Momentum", sub: "Growth already under way", start: 0.25, end: 1.19, kind: "mom", val: "+₹0.94B", tip: "Indian guest nights grow 50–60% a year today; assumed to taper to ~30% by 2030, with prices up ~5% a year." },
+    { label: "① Indians abroad", sub: "Lead bucket", start: 1.19, end: 1.69, kind: "plan", val: "+₹0.50B", tip: "Group trips abroad to home-friendly destinations. ~1% of Indian leisure trips abroad by 2030." },
+    { label: "② Indians in India", sub: "Getaways from top 8 metros", start: 1.69, end: 2.16, kind: "plan", val: "+₹0.47B", tip: "Weekend and holiday group getaways. ~1.5% of India's homestay and villa bookings." },
+    { label: "③ The world in India", sub: "Tourists and NRIs", start: 2.16, end: 2.25, kind: "plan", val: "+₹0.09B", tip: "Foreign tourists and NRIs visiting home. Small and slow by design." },
+    { label: "④ Beyond stays", sub: "Experiences, Services, hotels", start: 2.25, end: 2.5, kind: "plan", val: "+₹0.25B", tip: "Experiences, Services and boutique hotels in India." },
+    { label: "2030 stretch", sub: "10x", start: 0, end: 2.5, kind: "base", val: "₹2.5B", tip: "Stretch target ₹2.5B (~$26M), if every bucket lands in full." },
+    { label: "2030 floor", sub: "~7x, bets partly land", start: 0, end: 1.8, kind: "floor", val: "₹1.6–1.8B", tip: "Realistic floor: slower momentum plus the plan delivering ~60%, with half the reserve levers." }
+  ];
+  var pct = function (v) { return (v / MAX * 100) + "%"; };
+  var wf = document.getElementById("wf");
+  var grid = '<div class="wf-grid">' + [0.5, 1, 1.5, 2].map(function (g) { return '<span style="left:' + pct(g) + '"></span>'; }).join("") + "</div>";
+  wf.innerHTML = rows.map(function (r, i) {
+    var full = r.end === MAX && r.start === 0;
+    var valPos;
+    if (full) valPos = 'right:0;padding-left:0;padding-right:8px;color:var(--bg)';
+    else if (r.end / MAX > 0.8) valPos = 'right:' + (100 - r.start / MAX * 100) + '%;padding-left:0;padding-right:8px';
+    else valPos = 'left:' + pct(r.end);
+    return '<div class="wf-row"><div class="wf-label">' + r.label + '<small>' + r.sub + '</small></div>' +
+      '<div class="wf-track">' + grid +
+      '<div class="wf-bar ' + r.kind + '" tabindex="0" data-tip="' + r.tip + '" style="left:' + pct(r.start) + ';width:' + pct(r.end - r.start) + '"></div>' +
+      '<span class="wf-val" style="' + valPos + '">' + r.val + '</span></div></div>';
+  }).join("") +
+  '<div class="wf-axis"><div></div><div class="wf-axis-track">' +
+  [0, 0.5, 1, 1.5, 2, 2.5].map(function (t) { return '<span style="left:' + pct(t) + '">₹' + t.toFixed(1) + 'B</span>'; }).join("") +
+  '</div></div>';
+
+  var tip = document.getElementById("tip");
+  function show(el, x, y) {
+    tip.textContent = el.getAttribute("data-tip");
+    tip.hidden = false;
+    var w = tip.offsetWidth, h = tip.offsetHeight;
+    var left = Math.min(Math.max(8, x + 12), window.innerWidth - w - 8);
+    var top = y + 16 + h > window.innerHeight ? y - h - 12 : y + 16;
+    tip.style.left = left + "px"; tip.style.top = top + "px";
+  }
+  wf.addEventListener("pointermove", function (e) {
+    var el = e.target.closest(".wf-bar");
+    if (el) show(el, e.clientX, e.clientY); else tip.hidden = true;
+  });
+  wf.addEventListener("pointerleave", function () { tip.hidden = true; });
+  wf.addEventListener("focusin", function (e) {
+    var el = e.target.closest(".wf-bar");
+    if (!el) return;
+    var r = el.getBoundingClientRect();
+    show(el, r.left + r.width / 2, r.bottom);
+  });
+  wf.addEventListener("focusout", function () { tip.hidden = true; });
+})();
+</script>
+
+</body>
+</html>
